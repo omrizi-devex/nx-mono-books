@@ -1,0 +1,162 @@
+{
+  "nx-mono-books/apps/api": {
+    "root": [
+      "nx-mono-books/apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "nx-mono-books/apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "nx-mono-books/apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "nx-mono-books/apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "nx-mono-books/apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "implicitDependencies": [
+      "nx-mono-books/apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "implicitDependencies.common": [
+      "nx-mono-books/apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "nx-mono-books/apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "nx-mono-books/apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "nx-mono-books/apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "nx-mono-books/apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.command": [
+      "nx-mono-books/apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.cwd": [
+      "nx-mono-books/apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "nx-mono-books/apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "nx-mono-books/apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "nx-mono-books/apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.command": [
+      "nx-mono-books/apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.cwd": [
+      "nx-mono-books/apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "nx-mono-books/apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "nx-mono-books/apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options": [
+      "nx-mono-books/apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.command": [
+      "nx-mono-books/apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.cwd": [
+      "nx-mono-books/apps/api/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "nx-mono-books/libs/common": {
+    "root": [
+      "nx-mono-books/libs/common/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "nx-mono-books/libs/common/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "nx-mono-books/libs/common/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "nx-mono-books/libs/common/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "nx-mono-books/libs/common/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "nx-mono-books/libs/common/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "nx-mono-books/libs/common/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "nx-mono-books/libs/common/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "nx-mono-books/libs/common/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.command": [
+      "nx-mono-books/libs/common/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.cwd": [
+      "nx-mono-books/libs/common/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "nx-mono-books/libs/common/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "nx-mono-books/libs/common/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options": [
+      "nx-mono-books/libs/common/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.command": [
+      "nx-mono-books/libs/common/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.options.cwd": [
+      "nx-mono-books/libs/common/project.json",
+      "nx/core/project-json"
+    ]
+  }
+}

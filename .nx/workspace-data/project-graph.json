@@ -1,0 +1,95 @@
+{
+  "nodes": {
+    "common": {
+      "name": "common",
+      "type": "lib",
+      "data": {
+        "root": "nx-mono-books/libs/common",
+        "name": "common",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "library",
+        "sourceRoot": "libs/common/src",
+        "targets": {
+          "test": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "uv run pytest",
+              "cwd": "libs/common"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "lint": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "uv run ruff check .",
+              "cwd": "libs/common"
+            },
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "implicitDependencies": [],
+        "tags": []
+      }
+    },
+    "api": {
+      "name": "api",
+      "type": "app",
+      "data": {
+        "root": "nx-mono-books/apps/api",
+        "name": "api",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "application",
+        "sourceRoot": "apps/api/src",
+        "implicitDependencies": [
+          "common"
+        ],
+        "targets": {
+          "serve": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "uv run uvicorn api.main:app --reload --port 8000",
+              "cwd": "apps/api"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "test": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "uv run pytest",
+              "cwd": "apps/api"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "lint": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "uv run ruff check .",
+              "cwd": "apps/api"
+            },
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "tags": []
+      }
+    }
+  },
+  "externalNodes": {},
+  "dependencies": {
+    "common": [],
+    "api": [
+      {
+        "source": "api",
+        "target": "common",
+        "type": "implicit"
+      }
+    ]
+  },
+  "version": "6.0",
+  "errors": [],
+  "computedAt": 1776580104559
+}
