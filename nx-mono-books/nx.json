@@ -28,6 +28,10 @@
     "lint": {
       "cache": true,
       "inputs": ["default", "^default"]
+    },
+    "typecheck": {
+      "cache": true,
+      "inputs": ["default", "^default"]
     }
   }
 }
