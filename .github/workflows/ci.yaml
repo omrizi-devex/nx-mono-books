@@ -1,0 +1,48 @@
+name: "NX Python Monorepo CI"
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout Full History"
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+        
+      - name: "Set base/head SHAs for nx affected"
+        uses: nrwl/nx-set-shas@v4
+        
+      - name: "Setup Node.js"
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      
+      - name: "Install NX dependencies"
+        run: npm ci
+      
+      - name: "Setup UV"
+        uses: astral-sh/uv-action@v5
+        with:
+          python-version: "3.14"
+          enable-cache: true
+      
+      - name: "Setup Python (driven by .python-version)"
+        run: uv python install
+      
+      - name: "Install Python Workspace Members"
+        run: uv sync --all-packages --frozen
+
+      - name: "Run Lint on Affected Projects"
+        run: npx nx affected -t lint --parallel=3
+
+      - name: "Run Typecheck on Affected Projects"
+        run: npx nx affected -t typecheck --parallel=3
+      
+      - name: "Run Tests on Affected Projects"
+        run: npx nx affected -t test --parallel=3
