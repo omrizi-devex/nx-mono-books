@@ -1,162 +1,274 @@
 {
-  "nx-mono-books/apps/api": {
+  "apps/api": {
     "root": [
-      "nx-mono-books/apps/api/project.json",
+      "apps/api/project.json",
       "nx/core/project-json"
     ],
     "name": [
-      "nx-mono-books/apps/api/project.json",
+      "apps/api/project.json",
       "nx/core/project-json"
     ],
     "$schema": [
-      "nx-mono-books/apps/api/project.json",
+      "apps/api/project.json",
       "nx/core/project-json"
     ],
     "projectType": [
-      "nx-mono-books/apps/api/project.json",
+      "apps/api/project.json",
       "nx/core/project-json"
     ],
     "sourceRoot": [
-      "nx-mono-books/apps/api/project.json",
+      "apps/api/project.json",
       "nx/core/project-json"
     ],
     "implicitDependencies": [
-      "nx-mono-books/apps/api/project.json",
+      "apps/api/project.json",
       "nx/core/project-json"
     ],
     "implicitDependencies.common": [
-      "nx-mono-books/apps/api/project.json",
+      "apps/api/project.json",
       "nx/core/project-json"
     ],
     "targets": [
-      "nx-mono-books/apps/api/project.json",
+      "apps/api/project.json",
       "nx/core/project-json"
     ],
     "targets.serve": [
-      "nx-mono-books/apps/api/project.json",
+      "apps/api/project.json",
       "nx/core/project-json"
     ],
     "targets.serve.executor": [
-      "nx-mono-books/apps/api/project.json",
+      "apps/api/project.json",
       "nx/core/project-json"
     ],
     "targets.serve.options": [
-      "nx-mono-books/apps/api/project.json",
+      "apps/api/project.json",
       "nx/core/project-json"
     ],
     "targets.serve.options.command": [
-      "nx-mono-books/apps/api/project.json",
+      "apps/api/project.json",
       "nx/core/project-json"
     ],
     "targets.serve.options.cwd": [
-      "nx-mono-books/apps/api/project.json",
+      "apps/api/project.json",
       "nx/core/project-json"
     ],
     "targets.test": [
-      "nx-mono-books/apps/api/project.json",
+      "apps/api/project.json",
       "nx/core/project-json"
     ],
     "targets.test.executor": [
-      "nx-mono-books/apps/api/project.json",
+      "apps/api/project.json",
       "nx/core/project-json"
     ],
     "targets.test.options": [
-      "nx-mono-books/apps/api/project.json",
+      "apps/api/project.json",
       "nx/core/project-json"
     ],
     "targets.test.options.command": [
-      "nx-mono-books/apps/api/project.json",
+      "apps/api/project.json",
       "nx/core/project-json"
     ],
     "targets.test.options.cwd": [
-      "nx-mono-books/apps/api/project.json",
+      "apps/api/project.json",
       "nx/core/project-json"
     ],
     "targets.lint": [
-      "nx-mono-books/apps/api/project.json",
+      "apps/api/project.json",
       "nx/core/project-json"
     ],
     "targets.lint.executor": [
-      "nx-mono-books/apps/api/project.json",
+      "apps/api/project.json",
       "nx/core/project-json"
     ],
     "targets.lint.options": [
-      "nx-mono-books/apps/api/project.json",
+      "apps/api/project.json",
       "nx/core/project-json"
     ],
     "targets.lint.options.command": [
-      "nx-mono-books/apps/api/project.json",
+      "apps/api/project.json",
       "nx/core/project-json"
     ],
     "targets.lint.options.cwd": [
-      "nx-mono-books/apps/api/project.json",
+      "apps/api/project.json",
       "nx/core/project-json"
+    ],
+    "targets.typecheck": [
+      "apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck.executor": [
+      "apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck.options": [
+      "apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck.options.command": [
+      "apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck.options.cwd": [
+      "apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.typecheck.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.typecheck.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.typecheck.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
     ]
   },
-  "nx-mono-books/libs/common": {
+  "libs/common": {
     "root": [
-      "nx-mono-books/libs/common/project.json",
+      "libs/common/project.json",
       "nx/core/project-json"
     ],
     "name": [
-      "nx-mono-books/libs/common/project.json",
+      "libs/common/project.json",
       "nx/core/project-json"
     ],
     "$schema": [
-      "nx-mono-books/libs/common/project.json",
+      "libs/common/project.json",
       "nx/core/project-json"
     ],
     "projectType": [
-      "nx-mono-books/libs/common/project.json",
+      "libs/common/project.json",
       "nx/core/project-json"
     ],
     "sourceRoot": [
-      "nx-mono-books/libs/common/project.json",
+      "libs/common/project.json",
       "nx/core/project-json"
     ],
     "targets": [
-      "nx-mono-books/libs/common/project.json",
+      "libs/common/project.json",
       "nx/core/project-json"
     ],
     "targets.test": [
-      "nx-mono-books/libs/common/project.json",
+      "libs/common/project.json",
       "nx/core/project-json"
     ],
     "targets.test.executor": [
-      "nx-mono-books/libs/common/project.json",
+      "libs/common/project.json",
       "nx/core/project-json"
     ],
     "targets.test.options": [
-      "nx-mono-books/libs/common/project.json",
+      "libs/common/project.json",
       "nx/core/project-json"
     ],
     "targets.test.options.command": [
-      "nx-mono-books/libs/common/project.json",
+      "libs/common/project.json",
       "nx/core/project-json"
     ],
     "targets.test.options.cwd": [
-      "nx-mono-books/libs/common/project.json",
+      "libs/common/project.json",
       "nx/core/project-json"
     ],
     "targets.lint": [
-      "nx-mono-books/libs/common/project.json",
+      "libs/common/project.json",
       "nx/core/project-json"
     ],
     "targets.lint.executor": [
-      "nx-mono-books/libs/common/project.json",
+      "libs/common/project.json",
       "nx/core/project-json"
     ],
     "targets.lint.options": [
-      "nx-mono-books/libs/common/project.json",
+      "libs/common/project.json",
       "nx/core/project-json"
     ],
     "targets.lint.options.command": [
-      "nx-mono-books/libs/common/project.json",
+      "libs/common/project.json",
       "nx/core/project-json"
     ],
     "targets.lint.options.cwd": [
-      "nx-mono-books/libs/common/project.json",
+      "libs/common/project.json",
       "nx/core/project-json"
+    ],
+    "targets.typecheck": [
+      "libs/common/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck.executor": [
+      "libs/common/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck.options": [
+      "libs/common/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck.options.command": [
+      "libs/common/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck.options.cwd": [
+      "libs/common/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.test.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.typecheck.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.typecheck.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.typecheck.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
     ]
   }
 }

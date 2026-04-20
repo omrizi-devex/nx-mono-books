@@ -4,110 +4,134 @@
   "pathMappings": {},
   "nxJsonPlugins": [],
   "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": ".editorconfig",
+        "hash": "5443105041930014821"
+      },
+      {
+        "file": ".github/workflows/ci.yaml",
+        "hash": "3286910836187546400"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "14806808719943237758"
+      },
+      {
+        "file": ".python-version",
+        "hash": "4446530629801136187"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "3833545590435012078"
+      },
+      {
+        "file": "README.md",
+        "hash": "1897049912466474998"
+      },
+      {
+        "file": "nx.json",
+        "hash": "4401261424949881425"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "13958768198388849153"
+      },
+      {
+        "file": "package.json",
+        "hash": "7527040923434562968"
+      },
+      {
+        "file": "pyproject.toml",
+        "hash": "11342440892495898421"
+      },
+      {
+        "file": "uv.lock",
+        "hash": "18267003864697004318"
+      }
+    ],
     "projectFileMap": {
       "api": [
         {
-          "file": "nx-mono-books/apps/api/README.md",
+          "file": "apps/api/README.md",
           "hash": "3244421341483603138"
         },
         {
-          "file": "nx-mono-books/apps/api/project.json",
-          "hash": "11619126445284598184"
+          "file": "apps/api/project.json",
+          "hash": "7703004259936116231"
         },
         {
-          "file": "nx-mono-books/apps/api/pyproject.toml",
+          "file": "apps/api/pyproject.toml",
           "hash": "14538046175224443933"
         },
         {
-          "file": "nx-mono-books/apps/api/src/api/__init__.py",
+          "file": "apps/api/src/api/__init__.py",
           "hash": "3244421341483603138"
         },
         {
-          "file": "nx-mono-books/apps/api/src/api/main.py",
+          "file": "apps/api/src/api/__pycache__/__init__.cpython-312.pyc",
+          "hash": "9747675866403464295"
+        },
+        {
+          "file": "apps/api/src/api/__pycache__/main.cpython-312.pyc",
+          "hash": "561006468414492870"
+        },
+        {
+          "file": "apps/api/src/api/main.py",
           "hash": "18124028007889010784"
         },
         {
-          "file": "nx-mono-books/apps/api/tests/test_main.py",
+          "file": "apps/api/tests/__pycache__/test_main.cpython-312-pytest-9.0.3.pyc",
+          "hash": "13949644751018632523"
+        },
+        {
+          "file": "apps/api/tests/test_main.py",
           "hash": "15160039267187083522"
         }
       ],
       "common": [
         {
-          "file": "nx-mono-books/libs/common/README.md",
+          "file": "libs/common/README.md",
           "hash": "3244421341483603138"
         },
         {
-          "file": "nx-mono-books/libs/common/project.json",
-          "hash": "794699818511508494"
+          "file": "libs/common/project.json",
+          "hash": "15855568193775775134"
         },
         {
-          "file": "nx-mono-books/libs/common/pyproject.toml",
+          "file": "libs/common/pyproject.toml",
           "hash": "13413194455556857579"
         },
         {
-          "file": "nx-mono-books/libs/common/src/common/__init__.py",
+          "file": "libs/common/src/common/__init__.py",
           "hash": "13635837153661970255"
         },
         {
-          "file": "nx-mono-books/libs/common/src/common/greeting.py",
-          "hash": "6996192983102324292"
+          "file": "libs/common/src/common/__pycache__/__init__.cpython-312.pyc",
+          "hash": "3033275358621166296"
         },
         {
-          "file": "nx-mono-books/libs/common/src/common/py.typed",
+          "file": "libs/common/src/common/__pycache__/greeting.cpython-312.pyc",
+          "hash": "51778929745817195"
+        },
+        {
+          "file": "libs/common/src/common/greeting.py",
+          "hash": "8298914088363542166"
+        },
+        {
+          "file": "libs/common/src/common/py.typed",
           "hash": "3244421341483603138"
+        },
+        {
+          "file": "libs/common/tests/__pycache__/test_greeting.cpython-312-pytest-9.0.3.pyc",
+          "hash": "12824309493231942570"
+        },
+        {
+          "file": "libs/common/tests/test_greeting.py",
+          "hash": "438915277831767333"
         }
       ]
-    },
-    "nonProjectFiles": [
-      {
-        "file": ".gitignore",
-        "hash": "2946497689325722503"
-      },
-      {
-        "file": "README.md",
-        "hash": "12008053175097573144"
-      },
-      {
-        "file": "nx-mono-books/.editorconfig",
-        "hash": "5443105041930014821"
-      },
-      {
-        "file": "nx-mono-books/.gitignore",
-        "hash": "14806808719943237758"
-      },
-      {
-        "file": "nx-mono-books/.python-version",
-        "hash": "4446530629801136187"
-      },
-      {
-        "file": "nx-mono-books/.vscode/extensions.json",
-        "hash": "3833545590435012078"
-      },
-      {
-        "file": "nx-mono-books/README.md",
-        "hash": "1897049912466474998"
-      },
-      {
-        "file": "nx-mono-books/nx.json",
-        "hash": "3779578684206737017"
-      },
-      {
-        "file": "nx-mono-books/package-lock.json",
-        "hash": "13958768198388849153"
-      },
-      {
-        "file": "nx-mono-books/package.json",
-        "hash": "7527040923434562968"
-      },
-      {
-        "file": "nx-mono-books/pyproject.toml",
-        "hash": "987204759741543349"
-      },
-      {
-        "file": "nx-mono-books/uv.lock",
-        "hash": "8745476060272128484"
-      }
-    ]
+    }
   },
-  "externalNodesHash": "3244421341483603138"
+  "externalNodesHash": "16233813295776606522"
 }
