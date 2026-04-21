@@ -112,6 +112,30 @@
       "apps/api/project.json",
       "nx/core/project-json"
     ],
+    "targets.build-image": [
+      "apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build-image.executor": [
+      "apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build-image.options": [
+      "apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build-image.inputs": [
+      "apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build-image.cache": [
+      "apps/api/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build-image.options.command": [
+      "apps/api/project.json",
+      "nx/core/project-json"
+    ],
     "targets.test.cache": [
       "nx.json",
       "nx/target-defaults"

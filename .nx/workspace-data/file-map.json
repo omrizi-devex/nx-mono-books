@@ -11,7 +11,7 @@
       },
       {
         "file": ".github/workflows/ci.yaml",
-        "hash": "3286910836187546400"
+        "hash": "15867479112859848245"
       },
       {
         "file": ".gitignore",
@@ -24,6 +24,10 @@
       {
         "file": ".vscode/extensions.json",
         "hash": "3833545590435012078"
+      },
+      {
+        "file": "CLAUDE.md",
+        "hash": "12234990556675053750"
       },
       {
         "file": "README.md",
@@ -54,7 +58,7 @@
       "api": [
         {
           "file": "apps/api/Dockerfile",
-          "hash": "1593219230184676687"
+          "hash": "13084469547909599084"
         },
         {
           "file": "apps/api/README.md",
@@ -62,7 +66,7 @@
         },
         {
           "file": "apps/api/project.json",
-          "hash": "7703004259936116231"
+          "hash": "8931846872696174367"
         },
         {
           "file": "apps/api/pyproject.toml",
