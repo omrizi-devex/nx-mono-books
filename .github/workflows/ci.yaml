@@ -44,7 +44,7 @@ jobs:
 
       - name: "List affected projects"
         run: |
-          affected_projects=$(nx show projects --affected)
+          affected_projects=$(npx nx show projects --affected)
           test -z "$affected_projects" && echo "No affected projects found." \
             || echo "Affected projects: $affected_projects"
           for p in $affected_projects; do
