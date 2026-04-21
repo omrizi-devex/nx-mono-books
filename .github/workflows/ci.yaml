@@ -42,6 +42,16 @@ jobs:
       - name: "Install Python Workspace Members"
         run: uv sync --all-packages --frozen
 
+      - name: "List affected projects"
+        run: |
+          affected_projects=$(nx show projects --affected)
+          test -z "$affected_projects" && echo "No affected projects found." \
+            || echo "Affected projects: $affected_projects"
+          for p in $affected_projects; do
+            root=$(nx show project "$p" --json | jq -r '.root')
+            echo "$p → $root"
+          done
+
       - name: "Run Lint on Affected Projects"
         run: npx nx affected -t lint --parallel=3
 

@@ -53,6 +53,10 @@
     "projectFileMap": {
       "api": [
         {
+          "file": "apps/api/Dockerfile",
+          "hash": "1593219230184676687"
+        },
+        {
           "file": "apps/api/README.md",
           "hash": "3244421341483603138"
         },
