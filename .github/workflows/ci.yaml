@@ -48,7 +48,7 @@ jobs:
           test -z "$affected_projects" && echo "No affected projects found." \
             || echo "Affected projects: $affected_projects"
           for p in $affected_projects; do
-            root=$(nx show project "$p" --json | jq -r '.root')
+            root=$(npx nx show project "$p" --json | jq -r '.root')
             echo "$p → $root"
           done
 
