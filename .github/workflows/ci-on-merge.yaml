@@ -1,0 +1,108 @@
+name: "CI on Merge"
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  detect-affected-apps:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    outputs:
+      apps: ${{ steps.affected.outputs.apps }}
+    steps:
+      - name: "Checkout Full History"
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: "Setup Node.js"
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: "Install NX dependencies"
+        run: npm ci
+
+      - name: "Collect affected apps"
+        id: affected
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.event.pull_request.merge_commit_sha }}
+        run: |
+          APPS_JSON=$(npx nx show projects --affected --base=$BASE --head=$HEAD \
+            | while read -r project; do
+                root=$(npx nx show project "$project" --json | jq -r '.root')
+                [[ "$root" == apps/* ]] && echo "$project"
+              done \
+            | jq -R -s -c 'split("\n") | map(select(length > 0))')
+          echo "apps=$APPS_JSON" >> $GITHUB_OUTPUT
+          echo "Affected apps: $APPS_JSON"
+
+  tag:
+    needs: detect-affected-apps
+    if: needs.detect-affected-apps.outputs.apps != '[]'
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        app: ${{ fromJson(needs.detect-affected-apps.outputs.apps) }}
+    steps:
+      - name: "Checkout Full History"
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: "Determine bump type from branch prefix"
+        id: bump
+        env:
+          BRANCH: ${{ github.event.pull_request.head.ref }}
+        run: |
+          if   [[ "$BRANCH" == major/* ]];                    then echo "type=major" >> $GITHUB_OUTPUT
+          elif [[ "$BRANCH" == feature/* ]];                  then echo "type=minor" >> $GITHUB_OUTPUT
+          elif [[ "$BRANCH" == bug/* || "$BRANCH" == bugfix/* || "$BRANCH" == fix/* ]]; \
+                                                              then echo "type=patch" >> $GITHUB_OUTPUT
+          else                                                     echo "type=patch" >> $GITHUB_OUTPUT
+          fi
+
+      - name: "Compute next version"
+        id: version
+        env:
+          APP: ${{ matrix.app }}
+          BUMP: ${{ steps.bump.outputs.type }}
+        run: |
+          LATEST=$(git tag -l "${APP}@*" | sort -V | tail -1)
+
+          if [[ -z "$LATEST" ]]; then
+            echo "next=1.0.0" >> $GITHUB_OUTPUT
+            echo "No existing tag for $APP — starting at 1.0.0"
+          else
+            VERSION="${LATEST#"${APP}@"}"
+            MAJOR=$(echo "$VERSION" | cut -d. -f1)
+            MINOR=$(echo "$VERSION" | cut -d. -f2)
+            PATCH=$(echo "$VERSION" | cut -d. -f3)
+
+            case "$BUMP" in
+              major) NEXT="$((MAJOR+1)).0.0" ;;
+              minor) NEXT="${MAJOR}.$((MINOR+1)).0" ;;
+              patch) NEXT="${MAJOR}.${MINOR}.$((PATCH+1))" ;;
+            esac
+
+            echo "next=$NEXT" >> $GITHUB_OUTPUT
+            echo "Bumping $LATEST → ${APP}@${NEXT} ($BUMP)"
+          fi
+
+      - name: "Create and push tag"
+        env:
+          APP: ${{ matrix.app }}
+          VERSION: ${{ steps.version.outputs.next }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git tag "${APP}@${VERSION}"
+          git push origin "${APP}@${VERSION}"
