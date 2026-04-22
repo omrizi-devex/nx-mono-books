@@ -3,7 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/api/src",
-  "implicitDependencies": ["common"],
+  "implicitDependencies": ["common", "ozlogger"],
   "targets": {
     "serve": {
       "executor": "nx:run-commands",
@@ -32,6 +32,18 @@
         "command": "uv run mypy .",
         "cwd": "apps/api"
       }
+    },
+    "build-image": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "docker build -f apps/api/Dockerfile -t api:$(git rev-parse --short HEAD) ."
+      },
+      "inputs": [
+        "default",
+        "^default",
+        "{projectRoot}/Dockerfile"
+      ],
+      "cache": false
     }
   }
 }

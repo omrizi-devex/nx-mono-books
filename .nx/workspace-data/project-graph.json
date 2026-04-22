@@ -1,5 +1,62 @@
 {
   "nodes": {
+    "ozlogger": {
+      "name": "ozlogger",
+      "type": "lib",
+      "data": {
+        "root": "libs/ozlogger",
+        "name": "ozlogger",
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "library",
+        "sourceRoot": "libs/ozlogger/src",
+        "targets": {
+          "test": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "uv run pytest",
+              "cwd": "libs/ozlogger"
+            },
+            "configurations": {},
+            "parallelism": true,
+            "cache": true,
+            "inputs": [
+              "default",
+              "^default"
+            ]
+          },
+          "lint": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "uv run ruff check .",
+              "cwd": "libs/ozlogger"
+            },
+            "configurations": {},
+            "parallelism": true,
+            "cache": true,
+            "inputs": [
+              "default",
+              "^default"
+            ]
+          },
+          "typecheck": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "uv run mypy .",
+              "cwd": "libs/ozlogger"
+            },
+            "configurations": {},
+            "parallelism": true,
+            "cache": true,
+            "inputs": [
+              "default",
+              "^default"
+            ]
+          }
+        },
+        "implicitDependencies": [],
+        "tags": []
+      }
+    },
     "common": {
       "name": "common",
       "type": "lib",
@@ -67,7 +124,8 @@
         "projectType": "application",
         "sourceRoot": "apps/api/src",
         "implicitDependencies": [
-          "common"
+          "common",
+          "ozlogger"
         ],
         "targets": {
           "serve": {
@@ -120,6 +178,20 @@
               "default",
               "^default"
             ]
+          },
+          "build-image": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "docker build -f apps/api/Dockerfile -t api:$(git rev-parse --short HEAD) ."
+            },
+            "inputs": [
+              "default",
+              "^default",
+              "{projectRoot}/Dockerfile"
+            ],
+            "cache": false,
+            "configurations": {},
+            "parallelism": true
           }
         },
         "tags": []
@@ -2829,11 +2901,17 @@
     }
   },
   "dependencies": {
+    "ozlogger": [],
     "common": [],
     "api": [
       {
         "source": "api",
         "target": "common",
+        "type": "implicit"
+      },
+      {
+        "source": "api",
+        "target": "ozlogger",
         "type": "implicit"
       }
     ],
@@ -6399,5 +6477,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1776751344887
+  "computedAt": 1776881306835
 }

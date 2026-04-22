@@ -11,7 +11,7 @@
       },
       {
         "file": ".github/workflows/ci.yaml",
-        "hash": "3286910836187546400"
+        "hash": "15867479112859848245"
       },
       {
         "file": ".gitignore",
@@ -22,8 +22,12 @@
         "hash": "4446530629801136187"
       },
       {
-        "file": ".vscode/extensions.json",
-        "hash": "3833545590435012078"
+        "file": ".vscode/settings.json",
+        "hash": "15179559162636969612"
+      },
+      {
+        "file": "CLAUDE.md",
+        "hash": "12234990556675053750"
       },
       {
         "file": "README.md",
@@ -43,54 +47,54 @@
       },
       {
         "file": "pyproject.toml",
-        "hash": "11342440892495898421"
+        "hash": "13423939901376450897"
       },
       {
         "file": "uv.lock",
-        "hash": "18267003864697004318"
+        "hash": "6988205266466070671"
       }
     ],
     "projectFileMap": {
-      "api": [
+      "ozlogger": [
         {
-          "file": "apps/api/Dockerfile",
-          "hash": "1593219230184676687"
-        },
-        {
-          "file": "apps/api/README.md",
+          "file": "libs/ozlogger/README.md",
           "hash": "3244421341483603138"
         },
         {
-          "file": "apps/api/project.json",
-          "hash": "7703004259936116231"
+          "file": "libs/ozlogger/project.json",
+          "hash": "5245302603616029089"
         },
         {
-          "file": "apps/api/pyproject.toml",
-          "hash": "14538046175224443933"
+          "file": "libs/ozlogger/pyproject.toml",
+          "hash": "13896407606588926306"
         },
         {
-          "file": "apps/api/src/api/__init__.py",
+          "file": "libs/ozlogger/src/ozlogger/__init__.py",
+          "hash": "18057863161075964729"
+        },
+        {
+          "file": "libs/ozlogger/src/ozlogger/__pycache__/__init__.cpython-312.pyc",
+          "hash": "9733037920466870521"
+        },
+        {
+          "file": "libs/ozlogger/src/ozlogger/__pycache__/main.cpython-312.pyc",
+          "hash": "113543768754344284"
+        },
+        {
+          "file": "libs/ozlogger/src/ozlogger/main.py",
+          "hash": "14546412671312279951"
+        },
+        {
+          "file": "libs/ozlogger/src/ozlogger/py.typed",
           "hash": "3244421341483603138"
         },
         {
-          "file": "apps/api/src/api/__pycache__/__init__.cpython-312.pyc",
-          "hash": "9747675866403464295"
+          "file": "libs/ozlogger/tests/__pycache__/test_logger.cpython-312-pytest-9.0.3.pyc",
+          "hash": "17945625346979835834"
         },
         {
-          "file": "apps/api/src/api/__pycache__/main.cpython-312.pyc",
-          "hash": "561006468414492870"
-        },
-        {
-          "file": "apps/api/src/api/main.py",
-          "hash": "18124028007889010784"
-        },
-        {
-          "file": "apps/api/tests/__pycache__/test_main.cpython-312-pytest-9.0.3.pyc",
-          "hash": "13949644751018632523"
-        },
-        {
-          "file": "apps/api/tests/test_main.py",
-          "hash": "15160039267187083522"
+          "file": "libs/ozlogger/tests/test_logger.py",
+          "hash": "15948989660409120573"
         }
       ],
       "common": [
@@ -133,6 +137,48 @@
         {
           "file": "libs/common/tests/test_greeting.py",
           "hash": "438915277831767333"
+        }
+      ],
+      "api": [
+        {
+          "file": "apps/api/Dockerfile",
+          "hash": "13084469547909599084"
+        },
+        {
+          "file": "apps/api/README.md",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/api/project.json",
+          "hash": "15238534081973060342"
+        },
+        {
+          "file": "apps/api/pyproject.toml",
+          "hash": "1869924377533933413"
+        },
+        {
+          "file": "apps/api/src/api/__init__.py",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/api/src/api/__pycache__/__init__.cpython-312.pyc",
+          "hash": "9747675866403464295"
+        },
+        {
+          "file": "apps/api/src/api/__pycache__/main.cpython-312.pyc",
+          "hash": "8761563342019950456"
+        },
+        {
+          "file": "apps/api/src/api/main.py",
+          "hash": "17882034404993626482"
+        },
+        {
+          "file": "apps/api/tests/__pycache__/test_main.cpython-312-pytest-9.0.3.pyc",
+          "hash": "13949644751018632523"
+        },
+        {
+          "file": "apps/api/tests/test_main.py",
+          "hash": "15160039267187083522"
         }
       ]
     }
