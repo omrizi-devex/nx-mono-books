@@ -1,27 +1,25 @@
 [project]
-name = "api"
+name = "ozlogger"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
+authors = [
+    { name = "Omri Ziner", email = "oziner@gmail.com" }
+]
 requires-python = ">=3.12"
 dependencies = [
-    "fastapi>=0.136.0",
-    "uvicorn[standard]>=0.44.0",
-    "common",
     "logger>=1.4",
-    "ozlogger",
 ]
-
-[tool.uv.sources]
-common = { workspace = true }
-ozlogger = { workspace = true }
 
 [dependency-groups]
 dev = [
-    "httpx>=0.28.1",
     "pytest>=9.0.3",
 ]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 pythonpath = ["src"]
+
+[build-system]
+requires = ["uv_build>=0.10.3,<0.11.0"]
+build-backend = "uv_build"
