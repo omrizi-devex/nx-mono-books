@@ -48,6 +48,9 @@ jobs:
     needs: detect-affected-apps
     if: needs.detect-affected-apps.outputs.apps != '[]'
     runs-on: ubuntu-latest
+    concurrency:
+      group: tag-${{ matrix.app }}
+      cancel-in-progress: false
     strategy:
       matrix:
         app: ${{ fromJson(needs.detect-affected-apps.outputs.apps) }}
