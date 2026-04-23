@@ -8,3 +8,8 @@ def test_greet_endpoint():
     response = client.get("/hello/Alice")
     assert response.status_code == 200
     assert response.json() == {"message": "Hello, Alice!"}
+
+def test_farewell_endpoint():
+    response = client.get("/bye/Alice")
+    assert response.status_code == 200
+    assert response.json() == {"message": "Goodbye, Alice!"}
