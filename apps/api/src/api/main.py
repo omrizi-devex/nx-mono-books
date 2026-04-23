@@ -9,3 +9,8 @@ logger = get_logger(__name__)
 def greet_endpoint(name: str) -> dict:
     logger.info("Greeting %s", name)
     return {"message": greet(name)}
+
+@app.get("/bye/{name}")
+def farewell_endpoint(name: str) -> dict:
+    logger.info("Farewell %s", name)
+    return {"message": f"Goodbye, {name}!"}
