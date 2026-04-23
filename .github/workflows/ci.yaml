@@ -50,8 +50,12 @@ jobs:
             || echo "Affected projects: $affected_projects"
           for p in $affected_projects; do
             root=$(npx nx show project "$p" --json | jq -r '.root')
-            echo "$p → $root"
-          done
+            # initialize affected_json if unset
+            affected_json=${affected_json:-'{}'}
+            # add/update the project -> root entry
+            affected_json=$(printf '%s' "$affected_json" | jq --arg k "$p" --arg v "$root" '. + {($k): $v}')
+            done
+          echo "$affected_json"
 
       - name: "Run Lint on Affected Projects"
         run: npx nx affected -t lint --parallel=3
