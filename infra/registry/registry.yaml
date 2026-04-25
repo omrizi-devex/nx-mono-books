@@ -1,0 +1,21 @@
+# Local OCI registry — simulates ACR/ECR for Docker images and Helm charts
+#
+# Runs as a Docker container on the HOST (not in-cluster) because macOS + Docker
+# driver does not expose NodePort services directly.
+#
+# Start:
+#   docker run -d -p 5001:5000 --restart=always --name local-registry registry:2
+#
+# Push Docker image:
+#   docker tag api:abc1234 localhost:5001/api:abc1234
+#   docker push localhost:5001/api:abc1234
+#
+# Push Helm chart:
+#   helm push api-1.0.0.tgz oci://localhost:5001/charts
+#
+# From inside minikube (image pull):
+#   host.minikube.internal:5001/api:abc1234
+#
+# Minikube must be started with:
+#   minikube start --insecure-registry="192.168.49.0/24"
+#   (host.minikube.internal resolves to 192.168.49.1 — covered by this CIDR)

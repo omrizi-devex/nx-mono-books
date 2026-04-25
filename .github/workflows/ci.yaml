@@ -14,54 +14,95 @@ permissions:
 jobs:
   ci:
     runs-on: ubuntu-latest
+    outputs:
+      affected_projects: ${{ steps.list_affected.outputs.affected_projects }}
+      affected_apps: ${{ steps.list_affected.outputs.affected_apps }}
     steps:
       - name: "Checkout Full History"
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-        
+
       - name: "Set base/head SHAs for nx affected"
         uses: nrwl/nx-set-shas@v4
-        
+
       - name: "Setup Node.js"
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-      
+
       - name: "Install NX dependencies"
         run: npm ci
-      
+
       - name: "Setup UV"
         uses: astral-sh/setup-uv@v5
         with:
           python-version: "3.14"
           enable-cache: true
-      
+
       - name: "Setup Python (driven by .python-version)"
         run: uv python install
-      
+
       - name: "Install Python Workspace Members"
         run: uv sync --all-packages --frozen
 
       - name: "List affected projects"
+        id: list_affected
         run: |
-          affected_projects=$(npx nx show projects --affected)
-          test -z "$affected_projects" && echo "No affected projects found." \
-            || echo "Affected projects: $affected_projects"
-          for p in $affected_projects; do
+          affected_projects_raw=$(npx nx show projects --affected)
+          all_projects='[]'
+          affected_apps='[]'
+          for p in $affected_projects_raw; do
             root=$(npx nx show project "$p" --json | jq -r '.root')
-            # initialize affected_json if unset
-            affected_json=${affected_json:-'{}'}
-            # add/update the project -> root entry
-            affected_json=$(printf '%s' "$affected_json" | jq --arg k "$p" --arg v "$root" '. + {($k): $v}')
-            done
-          echo "$affected_json"
+            all_projects=$(echo "$all_projects" | jq -c --arg p "$p" '. + [$p]')
+            if [[ $root == apps/* ]]; then
+              affected_apps=$(echo "$affected_apps" | jq -c --arg p "$p" '. + [$p]')
+            fi
+          done
+          echo "Affected projects: $all_projects"
+          echo "Affected apps:     $affected_apps"
+          echo "affected_projects=$all_projects" >> $GITHUB_OUTPUT
+          echo "affected_apps=$affected_apps" >> $GITHUB_OUTPUT
 
       - name: "Run Lint on Affected Projects"
         run: npx nx affected -t lint --parallel=3
 
       - name: "Run Typecheck on Affected Projects"
         run: npx nx affected -t typecheck --parallel=3
-      
+
       - name: "Run Tests on Affected Projects"
         run: npx nx affected -t test --parallel=3
+
+  build-and-push:
+    needs: ci
+    runs-on: ubuntu-latest
+    if: needs.ci.outputs.affected_apps != '[]'
+    strategy:
+      matrix:
+        app: ${{ fromJson(needs.ci.outputs.affected_apps) }}
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: "Setup Node.js"
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: "Install NX dependencies"
+        run: npm ci
+
+      - name: "Build and push ${{ matrix.app }}"
+        env:
+          REGISTRY_URL: ${{ secrets.REGISTRY_URL }}
+          IMAGE_TAG: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
+        run: |
+          REGISTRY_URL="${REGISTRY_URL#https://}"
+          REGISTRY_URL="${REGISTRY_URL#http://}"
+          REGISTRY_URL="${REGISTRY_URL%/}"
+          IMAGE_TAG="${IMAGE_TAG:0:7}"
+          export REGISTRY_URL IMAGE_TAG
+          echo "Building ${{ matrix.app }} → $REGISTRY_URL/${{ matrix.app }}:$IMAGE_TAG"
+          npx nx run "${{ matrix.app }}:build-image-prerelease"
