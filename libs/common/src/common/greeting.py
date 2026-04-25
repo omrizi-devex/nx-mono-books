@@ -7,4 +7,7 @@ def greet(name: str) -> str:
 
 def goodbye(name: str) -> str:
     """Returns a goodbye message for the given first name."""
+
+def farewell(name: str) -> str:
+    """Returns a farewell message for the given first name."""
     return f"Goodbye, {name}!"
