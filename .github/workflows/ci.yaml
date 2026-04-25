@@ -54,9 +54,9 @@ jobs:
           affected_apps='[]'
           for p in $affected_projects_raw; do
             root=$(npx nx show project "$p" --json | jq -r '.root')
-            all_projects=$(echo "$all_projects" | jq --arg p "$p" '. + [$p]')
+            all_projects=$(echo "$all_projects" | jq -c --arg p "$p" '. + [$p]')
             if [[ $root == apps/* ]]; then
-              affected_apps=$(echo "$affected_apps" | jq --arg p "$p" '. + [$p]')
+              affected_apps=$(echo "$affected_apps" | jq -c --arg p "$p" '. + [$p]')
             fi
           done
           echo "Affected projects: $all_projects"
