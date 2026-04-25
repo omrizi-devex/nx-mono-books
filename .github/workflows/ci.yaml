@@ -97,10 +97,12 @@ jobs:
       - name: "Build and push ${{ matrix.app }}"
         env:
           REGISTRY_URL: ${{ secrets.REGISTRY_URL }}
+          IMAGE_TAG: ${{ github.event_name == 'pull_request' && github.event.pull_request.head.sha || github.sha }}
         run: |
           REGISTRY_URL="${REGISTRY_URL#https://}"
           REGISTRY_URL="${REGISTRY_URL#http://}"
           REGISTRY_URL="${REGISTRY_URL%/}"
-          export REGISTRY_URL
-          echo "Building ${{ matrix.app }} → $REGISTRY_URL/${{ matrix.app }}:$(git rev-parse --short HEAD)"
+          IMAGE_TAG="${IMAGE_TAG:0:7}"
+          export REGISTRY_URL IMAGE_TAG
+          echo "Building ${{ matrix.app }} → $REGISTRY_URL/${{ matrix.app }}:$IMAGE_TAG"
           npx nx run "${{ matrix.app }}:build-image-prerelease"
