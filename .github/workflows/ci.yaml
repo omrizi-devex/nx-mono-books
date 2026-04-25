@@ -98,5 +98,8 @@ jobs:
         env:
           REGISTRY_URL: ${{ secrets.REGISTRY_URL }}
         run: |
+          REGISTRY_URL="${REGISTRY_URL#https://}"
+          REGISTRY_URL="${REGISTRY_URL#http://}"
+          export REGISTRY_URL
           echo "Building ${{ matrix.app }} → $REGISTRY_URL/${{ matrix.app }}:$(git rev-parse --short HEAD)"
           npx nx run "${{ matrix.app }}:build-image-prerelease"
